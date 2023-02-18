@@ -13,7 +13,16 @@ export default function Recipe() {
         <main className={style.recipe}>
             {isPending && <p className={style.loading}>Loading...</p>}
             {error && <p className={style.error}>{error}</p>}
-            {data && <h1>{data.title}</h1>}
+            {data && (
+                <>
+                    <h2 className={style.page_title}>{data.title}</h2>
+                    <p>Leva {data.cookingTime} minutos para fazer.</p>
+                    <ul>
+                        {data.ingredients.map(ing => <li key={ing}>{ing}</li>)}
+                    </ul>
+                    <p className={style.method}>{data.method}</p>
+                </>
+            )}
         </main>
     )
 }
