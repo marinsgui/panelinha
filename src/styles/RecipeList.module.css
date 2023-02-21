@@ -49,3 +49,8 @@
     border-radius: 4px;
     margin: 20px auto 0;
 }
+
+.error {
+    text-align: center;
+    margin: 40px auto;
+}

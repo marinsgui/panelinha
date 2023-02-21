@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import style from '../styles/RecipeList.module.css'
 
 export default function RecipeList({ recipes }) {
+
+    if(recipes.length === 0) {
+        return <div className={style.error}>Nenhuma receita encontrada</div>
+    }
+
     return (
         <div className={style.recipe_list}>
             {recipes.map(recipe => (
