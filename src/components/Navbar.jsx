@@ -6,11 +6,11 @@ import style from '../styles/Navbar.module.css'
 import Searchbar from './SearchBar'
 
 export default function Navbar() {
-    const { color, changeColor } = useTheme()
+    const { color } = useTheme()
 
     return (
         <header className={style.navbar} style={{ backgroundColor: color }}>
-            <nav onClick={() => changeColor('pink')}>
+            <nav>
                 <Link to='/' className={style.link}>
                     <h1>Panelinha</h1>
                 </Link>

@@ -50,6 +50,16 @@
     margin: 20px auto 0;
 }
 
+.recipe_list .card.dark {
+    background-color: #555;
+}
+
+.recipe_list .card.dark p, 
+.recipe_list .card.dark h3, 
+.recipe_list .card.dark div {
+    color: #e4e4e4;
+}
+
 .error {
     text-align: center;
     margin: 40px auto;
