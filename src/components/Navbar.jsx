@@ -3,7 +3,7 @@ import useTheme from '../hooks/useTheme'
 
 import style from '../styles/Navbar.module.css'
 
-import Searchbar from './SearchBar'
+import Searchbar from './Searchbar'
 
 export default function Navbar() {
     const { color } = useTheme()
