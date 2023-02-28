@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
-import useFetch from '../../hooks/useFetch'
+
 import { useNavigate } from 'react-router-dom'
+
+import { projectFirestore } from '../../firebase/config'
+
 import style from '../../styles/Create.module.css'
 
 export default function Create() {
@@ -11,11 +14,18 @@ export default function Create() {
     const [ingredients, setIngredients] = useState([])
     const history = useNavigate()
 
-    const { postData, data, error } = useFetch('http://localhost:3000/recipes', 'POST')
+    
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        postData({ title, ingredients, method, cookingTime })
+        const doc = { title, ingredients, method, cookingTime }
+
+        try {
+            await projectFirestore.collection('recipes').add(doc)
+            history('/')
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     function handleAdd(e) {
@@ -27,12 +37,6 @@ export default function Create() {
         }
         setNewIngredient('')
     }
-
-    useEffect(() => {
-        if(data) {
-            history('/')
-        }
-    }, [data])
 
     return (
         <main className={style.create}>
