@@ -29,6 +29,12 @@ export default function Recipe() {
         })
     }, [id])
 
+    function handleClick() {
+        projectFirestore.collection('recipes').doc(id).update({
+            title: 'lalalalalalalala'
+        })
+    }
+
     return (
         <main className={`${style.recipe} ${style[mode]}`}>
             {isPending && <p className={style.loading}>Loading...</p>}
@@ -41,6 +47,7 @@ export default function Recipe() {
                         {data.ingredients.map(ing => <li key={ing}>{ing}</li>)}
                     </ul>
                     <p className={style.method}>{data.method}</p>
+                    <button onClick={handleClick}>Atualizar a receita</button>
                 </>
             )}
         </main>
